@@ -1,0 +1,28 @@
+# Node.js / Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.output/
+frontend/.env
+
+# Python / FastAPI
+backend/__pycache__/
+backend/*.pyc
+backend/env/
+backend/.venv/
+backend/.mypy_cache/
+backend/.pytest_cache/
+backend/.env
+backend/.DS_Store
+# Exclure les modèles lourds
+backend/app/models/
+
+
+# macOS system files
+.DS_Store
+
+# VSCode settings
+.vscode/
+
+# Logs
+*.log

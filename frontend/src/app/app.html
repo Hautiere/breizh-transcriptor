@@ -1,0 +1,57 @@
+<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+  <div>
+    <h1 style="margin: 0;">🎧 ✍️ Klev ha Skriva · Brezhonneg transcript</h1>
+    <p style="margin: 0; font-size: 0.95rem;">
+      {{ slogan }}
+    </p>
+  </div>
+  <div style="display: flex; gap: 0.5rem;">
+    <!-- Drapeau breton en premier -->
+    <button (click)="setLang('br')" title="Brezhoneg" style="background: none; border: none; padding: 0;">
+      <img src="assets/gwenn_ha_du_24x16.png" alt="Brezhoneg" style="height: 16px; vertical-align: middle;" />
+    </button>
+    <button (click)="setLang('fr')" title="Français" style="font-size: 1.2rem; background: none; border: none;">🇫🇷</button>
+    <button (click)="setLang('en')" title="English" style="font-size: 1.2rem; background: none; border: none;">🇬🇧</button>
+  </div>
+</div>
+
+
+<input type="file" (change)="onFileSelected($event)" />
+<button (click)="upload()" [disabled]="!selectedFile">Transcrire</button>
+
+<div *ngIf="isLoading" style="margin-top: 1rem;">
+  <p>⏳ Traitement en cours...</p>
+  <div style="height: 6px; width: 100%; background: #eee; border-radius: 3px; overflow: hidden;">
+    <div style="width: 100%; height: 100%; background: linear-gradient(to right, #4caf50 10%, transparent 10% 90%, #4caf50 90%);
+                background-size: 200% 100%;
+                animation: loading-bar 1.2s linear infinite;">
+    </div>
+  </div>
+</div>
+
+<style>
+@keyframes loading-bar {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+</style>
+
+
+<div *ngIf="response">
+  <h2>Texte brut</h2>
+  <div style="white-space: pre-wrap; word-wrap: break-word; padding: 1rem; background: #f4f4f4; border: 1px solid #ccc; max-height: 300px; overflow-y: auto;">
+    {{ response.raw_text }}
+  </div>
+
+  <h2>Texte nettoyé</h2>
+  <div style="white-space: pre-wrap; word-wrap: break-word; padding: 1rem; background: #e6f7e6; border: 1px solid #ccc; max-height: 300px; overflow-y: auto;">
+    {{ response.clean_text }}
+  </div>
+
+  <button (click)="download('txt')">📄 Télécharger TXT</button>
+  <button (click)="download('json')">🔢 Télécharger JSON</button>
+</div>
