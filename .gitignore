@@ -1,3 +1,9 @@
+# Python cache
+**/__pycache__/
+*.py[cod]
+*.gitignore.save
+
+
 # Node.js / Angular
 frontend/node_modules/
 frontend/dist/
